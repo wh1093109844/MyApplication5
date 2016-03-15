@@ -7,7 +7,9 @@ public class Client {
     public static void main(String args[]) {
         HanMeimei hanMeimei = new HanMeimei();
         LiLei liLei = new LiLei();
-        hanMeimei.setLiLei(liLei);
+        Jim jim = new Jim();
+        hanMeimei.addObserver(liLei);
+        hanMeimei.addObserver(jim);
         hanMeimei.study();
         hanMeimei.shopping();
     }

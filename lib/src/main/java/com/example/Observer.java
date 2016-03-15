@@ -1,5 +1,5 @@
 package com.example;
 
-public interface ILiLei {
+public interface Observer {
     public void update(String message);
 }
