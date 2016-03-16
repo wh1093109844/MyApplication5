@@ -52,6 +52,29 @@ public class ObserverManager {
         registerObserver(observer.getClass().getName(), observer);
     }
 
+    public void unregisterObserver(String tag, Observer observer) {
+        Set<Observer> observerSet = oberversMap.get(tag);
+        if (observerSet == null || observerSet.isEmpty()) {
+            Log.i(TAG, "not observer");
+        }
+        if (observerSet.contains(observer)) {
+            observerSet.remove(observer);
+        }
+    }
+
+    public void unregisterObserver(String tag) {
+        if (oberversMap.containsKey(tag)) {
+            oberversMap.remove(tag);
+        }
+    }
+
+    public void unregisterObserver(Observer observer) {
+        Set<String> keySet = oberversMap.keySet();
+        for (String key : keySet) {
+            unregisterObserver(key, observer);
+        }
+    }
+
     public void notifyObserver(String tag, Object obj) {
         Log.i(TAG, "=============notifyObserver=============");
         Log.i(TAG, "TAG:" + tag);
